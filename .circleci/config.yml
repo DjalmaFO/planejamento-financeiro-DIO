@@ -6,7 +6,7 @@ jobs:
     # Install go modules and run tests
     docker:
       - image: cimg/go:1.23
-    workdir: /go/src/github.com/DjalmaFO/planejamento-financeiro-DIO
+    working_directory: /go/src/github.com/DjalmaFO/planejamento-financeiro-DIO
     steps:
       - checkout
       - run: go get -v -t -d ./...
