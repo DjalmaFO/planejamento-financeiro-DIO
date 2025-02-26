@@ -5,7 +5,7 @@ jobs:
   test-go:
     # Install go modules and run tests
     docker:
-      - image: cimg/go:1.20
+      - image: cimg/go:1.22
     steps:
       - checkout
       - restore_cache:
@@ -24,6 +24,7 @@ jobs:
       - run:
           name: Run tests
           command: gotestsum --junitfile junit.xml
+      - run: go test -v ./...
       - store_test_results:
           path: junit.xml
   build-go-executables:
