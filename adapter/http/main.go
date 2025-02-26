@@ -5,12 +5,15 @@ import (
 	"net/http"
 
 	transaction_handler "github.com/DjalmaFO/planejamento-financeiro-DIO/adapter/http/transaction"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 func Init() {
 	http.HandleFunc("/health", healthHandler)
 	http.HandleFunc("/transactions", transaction_handler.GetTransactions)
 	http.HandleFunc("/transaction/create", transaction_handler.CreateTransaction)
+
+	http.HandleFunc("/metrics", promhttp.Handler().ServeHTTP)
 
 	http.ListenAndServe(":8080", nil)
 }
