@@ -5,7 +5,7 @@ jobs:
   build:
     # Install go modules and run tests
     docker:
-      - image: cimg/go:1.23
+      - image: circleci/golang:1.23
     working_directory: /go/src/github.com/DjalmaFO/planejamento-financeiro-DIO
     steps:
       - checkout
